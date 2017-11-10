@@ -6,12 +6,11 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   ppl;
   country: FirebaseListObservable<any[]>;
-  constructor(private af: AngularFire){
-  }
+  constructor(private af: AngularFire){}
 
   ngOnInit(){
     this.country = this.af.database.list('/country');

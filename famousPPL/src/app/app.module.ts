@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
+import { FamousPplListComponent } from './famous-ppl-list/famous-ppl-list.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAPnSo1J79LpGCK4yshHRnPHbTbqKOWKqU",
@@ -17,7 +18,8 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FamousPplListComponent
   ],
   imports: [
     FormsModule,
