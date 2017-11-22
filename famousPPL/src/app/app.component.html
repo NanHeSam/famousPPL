@@ -4,8 +4,8 @@
     Welcome to {{title}}!
   </h1>
 </div>
-<button (click)="add()">add</button>
-<ul>
-  <li *ngFor="let c of country | async">{{c.$value}}</li>
-</ul>
-{{(ppl | async)?.age}}
+<nav style="text-align:center">
+    <a routerLink="/dashboard">dashboard</a>
+    <a routerLink="/add">add a famous person</a>
+<nav>
+<router-outlet></router-outlet>

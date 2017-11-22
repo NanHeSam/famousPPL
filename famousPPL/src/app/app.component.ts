@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { FamousPplServiceService } from './famous-ppl-service.service';
+import { Observable } from 'rxjs/Observable';
+import { famousPpl } from './famousPpl';
 
 @Component({
   selector: 'app-root',
@@ -7,23 +10,15 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
-  ppl;
-  country: FirebaseListObservable<any[]>;
-  constructor(private af: AngularFire){}
 
+  title = 'List of Famous People';
+  person: famousPpl;
+  ppl: famousPpl[];
+  constructor(private fs: FamousPplServiceService){ }
   ngOnInit(){
-    this.country = this.af.database.list('/country');
-    this.ppl = this.af.database.object('/demograph');
+    this.getPeople();
   }
-
-  add(){
-    this.country.push({
-      name: 'Uganda'
-    });
+  getPeople(): void{
+    this.fs.getPpl().subscribe(people => this.ppl = people);
   }
-  
-  // ngOnDestry(){
-  //   this.sub.unsubscribe();
-  // }
 }

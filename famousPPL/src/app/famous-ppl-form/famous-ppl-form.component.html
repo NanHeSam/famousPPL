@@ -1,0 +1,29 @@
+<div align="center">
+<form [formGroup]="personForm" (ngSubmit)="onSubmit()" novalidate> 
+  <div>
+    <label for="name">Name:
+      <input formControlName="name">
+      <control-message [control]="personForm.controls.name"></control-message>
+    </label>
+    <br/>
+    <label for="country">Country:
+      <select formControlName="country">
+        <option *ngFor="let country of countries" [value]="country">
+          {{country}}
+        </option>
+      </select>
+      <control-message [control]="personForm.controls.country"></control-message>
+    </label>
+    <br/>
+    <label>Description:</label>
+    <br/>
+    <textarea formControlName="description"></textarea>
+    <control-message [control]="personForm.controls.description"></control-message>
+  </div>
+  <br/>
+  <div align="center">
+      <button type="submit"
+              [disabled]="!personForm.valid">save</button>
+    </div>
+</form>
+</div>

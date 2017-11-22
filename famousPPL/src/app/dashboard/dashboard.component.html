@@ -1,0 +1,12 @@
+<h3 style="text-align:center">List of Famous People</h3>
+<div align="center">
+<ul class="hero">
+    <li *ngFor="let person of ppl" style="list-style-type: none">
+        <a routerLink="/description/{{person.$key}}">
+            {{person.name}}
+        </a>
+        <button class="delete" title="delete person"
+          (click)="delete(person.$key)">x</button>
+    </li>
+</ul>
+</div>
