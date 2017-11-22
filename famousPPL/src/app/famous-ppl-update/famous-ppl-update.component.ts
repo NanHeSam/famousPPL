@@ -17,6 +17,7 @@ export class FamousPplUpdateComponent implements OnInit {
   @Input() person: famousPpl;
   countries = countries;
   personForm: any;
+  key: string;
   curPerson: Observable<famousPpl>;
   constructor(private fs: FamousPplServiceService, private fb: FormBuilder, private route: Router) {
     this.createForm();
@@ -31,8 +32,8 @@ export class FamousPplUpdateComponent implements OnInit {
   }
 
   ngOnInit(){
-    let id = this.route.url.substr(this.route.url.lastIndexOf('/') + 1);
-    this.fs.getPersonById(id).subscribe(person => this.person = person);
+    this.key = this.route.url.substr(this.route.url.lastIndexOf('/') + 1);
+    this.fs.getPersonById(this.key).subscribe(person => this.person = person);
   }
   
   createForm(){
@@ -43,10 +44,10 @@ export class FamousPplUpdateComponent implements OnInit {
     })
   }
 
-  onSubmit(key: string){
+  onSubmit(){
     let savePerson = this.preparePerson();
-    this.fs.updatePerson(key, savePerson);
-    this.route.navigate(['/description/'+key]);
+    this.fs.updatePerson(this.key, savePerson);
+    this.route.navigate(['/description/'+this.key]);
   }
 
   preparePerson(): famousPpl{
