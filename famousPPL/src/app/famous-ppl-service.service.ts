@@ -12,11 +12,11 @@ import { FirebaseObjectObservable } from 'angularfire2/database';
 export class FamousPplServiceService {
   private dbPath: string = '/People';
   person: famousPpl;
-  ppl: FirebaseListObservable<any[]>;
+  ppl: FirebaseListObservable<famousPpl[]>;
   constructor(private af: AngularFire) { 
   }
 
-  getPpl (): Observable<any[]>{
+  getPpl (): Observable<famousPpl[]>{
     this.ppl = this.af.database.list(`${this.dbPath}`);
     return this.ppl;
   }

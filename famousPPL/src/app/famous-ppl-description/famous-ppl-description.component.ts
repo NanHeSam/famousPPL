@@ -33,7 +33,6 @@ export class FamousPplDescriptionComponent implements OnInit {
   
   update(): void{
     let url = this.route.snapshot.paramMap.get('id');
-    console.log(url);
     this.router.navigate(['/description/update/' + url]);
   }
 }

@@ -32,8 +32,7 @@ export class FamousPplUpdateComponent implements OnInit {
 
   ngOnInit(){
     let id = this.route.url.substr(this.route.url.lastIndexOf('/') + 1);
-    this.curPerson = this.fs.getPersonById(id);
-    console.log(this.curPerson);
+    this.fs.getPersonById(id).subscribe(person => this.person = person);
   }
   
   createForm(){
@@ -46,7 +45,8 @@ export class FamousPplUpdateComponent implements OnInit {
 
   onSubmit(key: string){
     let savePerson = this.preparePerson();
-    this.fs.updatePerson(key, this.person);
+    this.fs.updatePerson(key, savePerson);
+    this.route.navigate(['/description/'+key]);
   }
 
   preparePerson(): famousPpl{

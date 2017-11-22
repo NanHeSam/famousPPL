@@ -2,7 +2,7 @@
     <form [formGroup]="personForm" (ngSubmit)="onSubmit()" novalidate> 
       <div>
         <label for="name">Name:
-          <input formControlName="name">{{curPerson.name}}
+          <input formControlName="name" value="{{person.name}}">
           <control-message [control]="personForm.controls.name"></control-message>
         </label>
         <br/>
@@ -17,7 +17,7 @@
         <br/>
         <label>Description:</label>
         <br/>
-        <textarea formControlName="description">{{curPerson.description}}</textarea>
+        <textarea formControlName="description" value="{{person.description}}"></textarea>
         <control-message [control]="personForm.controls.description"></control-message>
       </div>
       <br/>
